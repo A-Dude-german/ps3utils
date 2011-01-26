@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if (( $# != 2 )); then
+    echo "Usage: sprxdiff file1 file2"
+    exit 1
+fi
+
+f1=$1
+f2=$2
+
+unself $f1 /tmp/sprxdiff1.elf
+unself $f2 /tmp/sprxdiff2.elf
+hexdiff /tmp/sprxdiff1.elf /tmp/sprxdiff2.elf
+
+

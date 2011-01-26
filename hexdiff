@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if (( $# != 2 )); then
+    echo "Usage: hexdiff file1 file2"
+    exit 1
+fi
+
+f1=$1
+f2=$2
+
+hexdump -C $f1 > /tmp/hexdiff.1 || exit
+hexdump -C $f2 > /tmp/hexdiff.2 || exit
+diff -u /tmp/hexdiff.1 /tmp/hexdiff.2 | less
+
+
